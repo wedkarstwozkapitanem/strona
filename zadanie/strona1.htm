@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta description="Zadanie z informatyki">
+    <link rel="icon" type="image/x-icon" href="zdjecia/fav.jpg">
+    <title>Lupa</title>
+</head>
+
+<body>
+    <div id="lupa"></div>
+    <div onmousemove="lupa(event)" id="fota" style="background-image: url(zdjecia/fota.jpg);">
+    </div>
+    <div id="lupaefekt" style="background-image: url(zdjecia/fota.jpg);"></div>
+    <div style="position:fixed;right:0;bottom:0;font-size: 24px;">
+        &copy Dominik Łempicki
+    </div>
+</body>
+
+</html>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: blue linear-gradient(45deg, green, transparent);
+        min-height: 100vh;
+    }
+
+    #fota {
+        border: 3px solid green;
+        border-radius: 28px;
+        cursor: pointer;
+        height: 600px;
+        width: 600px;
+        background-repeat: no-repeat;
+    }
+
+    #lupaefekt {
+        width: 400px;
+        height: 400px;
+        border: 3px solid black;
+        margin: 10px;
+        border-radius: 10px;
+        background-position: 0px 0px;
+        background-size: 400%;
+    }
+
+    #lupa {
+        position: absolute;
+        width: 88px;
+        height: 88px;
+        border: 4px solid black;
+        top: 100px;
+        border-radius: 8px;
+        background-color: rgba(109, 110, 111, 0.667);
+    }
+</style>
+<script>
+    function lupa(event) {
+        osxp = event.layerX;
+        osyp = event.layerY;
+        osx = (event.layerX * 6);
+        osy = (event.layerY * 12) - 400;
+        console.log('x' + osx);
+        console.log('y' + osy);
+        document.getElementById('lupaefekt').style.backgroundPositionX = '-' + osx + 'px';
+        document.getElementById('lupaefekt').style.backgroundPositionY = '-' + osy / 3 + 'px';
+
+
+        document.getElementById('lupa').style.left = osxp + 'px';
+        document.getElementById('lupa').style.top = osyp + 'px';
+    }
+
+</script>

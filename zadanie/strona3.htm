@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tytuł strony</title>
+    <meta description="Zadanie z informatyki">
+    <link rel="icon" type="image/x-icon" href="zdjecia/fav.jpg">
+</head>
+<body>
+    <h1 class="efekt">Efekt tekstowy</h1>
+<div id="zad" > <b><i><u> <span id="tekst" contenteditable="true" autofocus> Zacznij coś pisać </span> </u></i></b> 
+    </div>
+    <div style="position:fixed;right:0;bottom:0;font-size: 24px;">
+        &copy Dominik Łempicki
+    </div>
+
+</body>
+
+</html>
+<style>
+
+body {
+    background: green linear-gradient(45deg,blue,transparent);
+    height: 100vh;
+    font-size: 88px;
+    color: lime;
+    text-shadow: 20px -8px 8px orange;
+    font-family: fantasy;
+    letter-spacing: 3px;
+    overflow: hidden;
+    width: 100vh;
+}
+#zad:hover {
+transform:scale(1.2);
+cursor:pointer;
+border:0;
+}
+
+#tekst {
+    border-right: 3px solid black;
+    animation: wyswietlaj 1s infinite;
+}
+@keyframes wyswietlaj {
+    0% {
+       border-right: 0;
+    }
+    100% {
+        border-right: 3px solid black;
+    }
+}
+#zad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform: skew(8deg, 4deg);
+    border:0;
+    border-radius:28px;
+    top:-100px;
+    color:red;
+    animation: spadajocytekst 5s ease,animacja 2s ease-in-out;
+}
+
+#zad:hover {
+    animation-play-state: paused;
+}
+.efekt {
+    animation: animacjatekstu 5s infinite;
+    position: relative;
+    right: -264px;
+    top:-100px;
+}
+
+.efekt:hover {
+    animation-play-state: paused;
+    animation: obrot 5s ease;
+}
+
+@keyframes animacjatekstu {
+    0% {
+       transform: skew(5deg,4deg);
+    }
+    50% {
+        transform: skew(68deg,4deg);
+    }
+    100% {
+        transform: skew(5deg,4deg);
+    }
+}
+@keyframes obrot {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+@keyframes spadajocytekst {
+    0% {
+        top: -660px;
+    }
+    100% {
+        top:-100;
+    }
+}
+
+</style>
