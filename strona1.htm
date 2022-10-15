@@ -34,7 +34,7 @@
         border-radius: 28px;
         cursor: pointer;
         height: 600px;
-        width: 600px;
+        width: 300px;
         background-repeat: no-repeat;
     }
 
@@ -62,7 +62,7 @@
     function lupa(event) {
         osxp = event.layerX;
         osyp = event.layerY;
-        osx = (event.layerX * 6);
+        osx = (event.layerX * 6) - 300;
         osy = (event.layerY * 12) - 400;
         document.getElementById('lupaefekt').style.backgroundPositionX = '-' + osx + 'px';
         document.getElementById('lupaefekt').style.backgroundPositionY = '-' + osy / 3 + 'px';
