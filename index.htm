@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tytuł strony</title>
+    <meta description="Zadanie z informatyki">
+    <link rel="icon" type="image/x-icon" href="zdjecia/fav.jpg">
+</head>
+
+<body>
+    <center>
+        <nav>
+            <div id="menu">
+                <header>
+                    <div style="height:100%;display:flex;">
+                        <h2 style="color:rgb(241, 245, 0);font-size: 28px;"> 📝 Zadania:</h2>
+                    </div>
+                </header>
+                <ul>
+                    <li> <a href="https://wedkarstwozkapitanem.blogspot.com/"><button
+                                title="przejdz do strony zewnętrznej"> <img src="zdjecia/innastrona.png"
+                                    alt="zdjecie" />
+                                <div> Strona <br> zewnętrzna </div>
+                            </button></a></li>
+                    <li><a href="strona1.htm"><button title="przejdz do tej strony"> <img src="zdjecia/fota.jpg"
+                                    alt="zdjecie" />
+                                <div> strona <span class="nr">&nbsp; 1 </span><br> </div>
+                            </button></a> </li>
+                    <li> <a href="strona2.htm"><button title="przejdz do tej strony"> <img src="zdjecia/tabela.png"
+                                    alt="zdjecie" />
+                                <div> strona <span class="nr">&nbsp; 2 </span> </div>
+                            </button></a> </li>
+                    <li> <a href="strona3.htm"><button title="przejdz do tej strony"> <img src="zdjecia/efekt.png"
+                                    alt="zdjecie" />
+                                <div> strona <span class="nr">&nbsp; 3 </span> </div>
+                            </button></a> </li>
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <div id="tresc">
+
+
+
+
+
+            </div>
+        </main>
+    </center>
+    <div style="position:fixed;right:0;bottom:0;font-size: 24px;color:orange;">
+        &copy Dominik Łempicki
+    </div>
+</body>
+
+</html>
+<style>
+    * {
+        color: blue;
+        list-style-type: none;
+        margin: 0;
+        font-family: fantasy;
+    }
+
+    body {
+        min-height: 100vh;
+        background: blue linear-gradient(180deg, green, transparent);
+    }
+
+    #menu {
+        min-height: 108px;
+        background: rgb(104, 11, 117) linear-gradient(288deg, rgb(77, 255, 0), transparent);
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid rgb(118, 252, 0);
+        border-radius: 28px;
+        position: fixed;
+        flex-wrap: wrap;
+        width: 100%;
+        animation: menupokaz 8s ease;
+    }
+
+    @keyframes menupokaz {
+        0% {
+            top: 100vh;
+        }
+
+        100% {
+            top: 0px;
+        }
+    }
+
+    #menu ul {
+        animation: pokazwybormenu 8s ease;
+        position: relative;
+    }
+
+    @keyframes pokazwybormenu {
+        0% {
+            right: -200vh;
+        }
+
+        100% {
+            right: 0;
+        }
+    }
+
+    #menu ul li {
+        min-height: 88px;
+        margin: 2px 12px 2px 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: left;
+        position: relative;
+        min-width: 20%;
+        cursor: pointer;
+        height: 188px;
+    }
+
+    li img {
+        width: 288px;
+        height: 100%;
+    }
+
+    button {
+        border-radius: 28px;
+        cursor: pointer;
+        width: 100%;
+        height: 168px;
+        outline: 3px solid rgb(120, 230, 10);
+        border: 3px solid green;
+        z-index: 4;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        z-index: 12;
+    }
+
+    button img {
+        border-radius: 28px;
+    }
+
+    button:hover>img {
+        opacity: 0.2;
+    }
+
+    button div {
+        height: 154px;
+        width: 100%;
+        font-size: 28px;
+        position: relative;
+        bottom: 168px;
+        font-size: 48px;
+        color: rgb(88, 130, 3);
+        background-color: black;
+        border-radius: 28px;
+        padding: 8px;
+        left: -10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        opacity: 0.8;
+        display: none;
+        animation: pokazmenu 2s ease-in;
+    }
+
+    button:hover>div {
+        display: flex;
+    }
+
+    @keyframes pokazmenu {
+        0% {
+            bottom: 288px;
+        }
+
+        100% {
+            bottom: 168px;
+        }
+    }
+</style>
+
+<script src="jquery/script.js"></script>
+
+<script>
+    function ajax(jakastrona) {
+        $.ajax({
+            type: "POST",
+            url: jakastrona,
+            success: function (p) {
+                document.getElementById('tresc').innerHTML = pixi;
+            }
+        });
+    }
+</script>

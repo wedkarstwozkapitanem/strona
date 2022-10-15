@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta description="Zadanie z informatyki">
+	<link rel="icon" type="image/x-icon" href="zdjecia/fav.jpg">
+	<title>Tabela</title>
+</head>
+
+<body>
+	<h1 contenteditable="true"> Wpisz nazwe </h1>
+	<table border="1" align="center">
+		<tr id="tytuly">
+			<th style="background: green ;" class="id_tytul">id</th>
+			<th contenteditable="true" title="edytuj" class="wiersz_tytul1" onclick="wiersz('1')">tytuł 1</th>
+			<th contenteditable="true" title="edytuj" colspan="2" class="wiersz_tytul2 wiersz_tytul3"
+				onclick="wiersz('2')" onclick="wiersz('3')">tytuł 2</th>
+			<th contenteditable="true" title="edytuj" class="wiersz_tytul4" onclick="wiersz('4')">tytuł 4</th>
+		</tr>
+		<tr>
+			<td class="id" align="center">1</td>
+			<td class="wiersz1" align="center" title="edytuj" contenteditable="true">komórka 1</td>
+			<td contenteditable="true" title="edytuj" class="wiersz2" align="center">komórka 2</td>
+			<td contenteditable="true" title="edytuj" align="center">komórka 3</td>
+			<td contenteditable="true" title="edytuj" class="wiersz4" align="center">komórka 4 </td>
+
+		</tr>
+		<tr>
+			<td class="id" align="center">2</td>
+			<td contenteditable="true" title="edytuj" class="wiersz1" align="center">komórka 1</td>
+			<td contenteditable="true" title="edytuj" class="wiersz2" align="center">komórka 2</td>
+			<td contenteditable="true" title="edytuj" align="center">komórka 3</td>
+			<td contenteditable="true" title="edytuj" class="wiersz4" align="center">komórka 4 </td>
+		</tr>
+
+	</table>
+
+	<div class="narzedzia">
+		<h1>Dodawanie tresci tabeli:</h1>
+		<center>
+			<h2>Liczba wierszy:</h2>
+			<input type="number" min="1" value="1" id="liczbakolum" placeholder="Wpisz liczbę kolumn" />
+			<h2>Liczba komórek:</h2>
+			<input type="number" min="1" value="4" id="liczbawierszy" placeholder="Wpisz liczbę komórek">
+			<button onclick="dodajwiersz()"> Dodaj kolumne </button>
+
+			<h2>Dodaj nową kolumne </h2>
+			<input type="text" id="tytuldzialu" placeholder="Dodaj tytuł kolumny" />
+			<button onclick="dodajdział()"> Dodaj kolumne </button>
+		</center>
+	</div>
+    <div style="position:fixed;right:0;bottom:0;font-size: 24px;">
+        &copy Dominik Łempicki
+    </div>
+</body>
+
+</html>
+<style>
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		background: rgb(202, 253, 0);
+	}
+
+	table {
+		border: 6px solid rgb(0, 191, 255);
+		border-radius: 28px;
+		background: green linear-gradient(90deg, blue, transparent);
+	}
+
+	th {
+		border-radius: 8px;
+		background: orange;
+		font-size: 30px;
+		cursor: pointer;
+	}
+
+	td {
+		width: 24%;
+		cursor: pointer;
+		border: 2px solid green;
+		border-radius: 8px;
+		color: rgb(37, 249, 0);
+		font-size: 28px;
+		animation: jasnosctabeli 5s ease;
+	}
+
+	@keyframes jasnosctabeli {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+
+	tr:hover {
+		background-color: silver;
+	}
+
+	.id {
+		background: rgb(4, 255, 0);
+		color: red;
+		width: 10%;
+	}
+
+	.wiersz1_tytul:hover .wiersz1 {
+		background: silver;
+	}
+
+	.narzedzia {
+		position: relative;
+		width: 40%;
+		min-height: 228px;
+		background-color: blue;
+		margin: 100px;
+		border-radius: 28px;
+		padding: 10px;
+		border: 3px solid green;
+	}
+
+	.narzedzia input {
+		width: 88%;
+		border-radius: 28px;
+		min-height: 48px;
+		text-align: center;
+		margin-top: 10px;
+	}
+
+	.narzedzia button {
+		color: rgb(157, 255, 0);
+		border-radius: 28px;
+		margin-top: 28px;
+		font-size: 28px;
+		width: 88%;
+		height: 88px;
+		background-color: green;
+		border: 3px solid rgb(255, 255, 0);
+		cursor: pointer;
+	}
+
+	.narzedzia button:hover {
+		opacity: 0.6;
+	}
+</style>
+
+<script>
+
+
+
+	function czyszczenieustawien() {
+		for (i = 0; i < document.querySelectorAll('td').length; i++) {
+			document.querySelectorAll('td')[i].style.background = "";
+			document.querySelectorAll('td')[i].style.border = "";
+		}
+	}
+
+	function wiersz(w) {
+		for (i = 0; i < document.querySelectorAll('td').length; i++) {
+			document.querySelectorAll('td')[i].style.background = "";
+			document.querySelector('.wiersz_tytul' + w).style.border = "";
+			document.querySelectorAll('td')[i].style.border = "";
+		}
+		for (i = 0; i < document.querySelectorAll('th').length; i++) {
+			document.querySelectorAll('th')[i].style.border = "";
+		}
+		document.querySelector('.wiersz_tytul' + w).style.border = "3px solid red";
+		for (i = 0; i < document.querySelectorAll('.wiersz' + w).length; i++) {
+			document.querySelectorAll('.wiersz' + w)[i].style.border = "1px solid red";
+			document.querySelectorAll('.wiersz' + w)[i].style.background = "silver";
+		}
+
+	}
+
+	var id = "3";
+
+
+
+
+	function dodajwiersz() {
+		if (document.getElementById('liczbakolum').value == 0) {
+			alert('Liczba kolumn wynosi 0!');
+		}
+
+		if (document.querySelectorAll('th').length < document.getElementById('liczbawierszy').value) {
+			alert('Nie ma tylu działów!!!');
+			document.getElementById('liczbawierszy').value = document.querySelectorAll('th').length;
+		}
+
+		let i = 1;
+		while (i <= document.getElementById('liczbakolum').value) {
+			dodajkolumny();
+			document.getElementById('liczbakolum').value = parseFloat(document.getElementById('liczbakolum').value) - parseFloat(1);
+			if (document.getElementById('liczbakolum').value == 1) {
+				document.getElementById('liczbakolum').value = 1;
+			}
+		}
+	}
+
+	function dodajkolumny() {
+		//*	for (let i=0;i<document.getElementById('liczbakolum').value;i++) {
+
+
+
+		document.querySelector('tbody').innerHTML += `<tr id="${id}" >`;
+
+		document.getElementById(id).innerHTML += `<td class="id" align="center">${id}</td>`
+
+		for (i = 0; i < document.getElementById('liczbawierszy').value; i++) {
+			document.getElementById(id).innerHTML += `<td title="edytuj" contenteditable="true"  class="wiersz${i + 1}" align="center">komórka ${i + 1} </td>`;
+		}
+
+		document.querySelector('table').innerHTML += `</tr>`;
+		id++;
+		//}
+
+
+	}
+
+
+	function dodajdział() {
+		let nr = document.querySelectorAll('th').length + 1;
+		if (document.getElementById('tytuldzialu').value != "") {
+			document.getElementById('tytuly').innerHTML += ` <th contenteditable="true" class="wiersz_tytul${nr}">${document.getElementById('tytuldzialu').value}</th> `;
+		} else {
+			alert('Nie wpisano tytułu!');
+		}
+		document.getElementById('tytuldzialu').value = "";
+	}
+</script>
