@@ -4,3 +4,4 @@
 # 2) Lupa
 # 3) Excel 
 # 4) efekt tekstowy
+# https://wedkarstwozkapitanem.github.io/strona/
